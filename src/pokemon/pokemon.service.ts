@@ -65,19 +65,25 @@ export class PokemonService {
 
       return pokemon;
     } catch (error) {
-      this.handleExceptions(error)
+      this.handleExceptions(error);
     }
   }
 
   async remove(value: string) {
     try {
-      const {deletedCount} = await this.pokemonModel.deleteOne({_id: value});
+      const { deletedCount } = await this.pokemonModel.deleteOne({
+        _id: value,
+      });
 
-      if(deletedCount === 0)
-        throw new BadRequestException(`Pokemon with ${value} not found`)
+      if (deletedCount === 0)
+        throw new BadRequestException(`Pokemon with ${value} not found`);
     } catch (error) {
-      this.handleExceptions(error)
+      this.handleExceptions(error);
     }
+  }
+
+  async removeAll(){
+    await this.pokemonModel.deleteMany({})
   }
 
   // Don't repeat yourself
