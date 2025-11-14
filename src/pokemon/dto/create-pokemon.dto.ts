@@ -1,8 +1,6 @@
 import {
   IsInt,
-  isInt,
   IsPositive,
-  isPositive,
   IsString,
   Min,
   MinLength,

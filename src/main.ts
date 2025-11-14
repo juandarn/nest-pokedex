@@ -10,8 +10,12 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,
-      transform: true,
+      whitelist: true, // quita propiedades extra
+      forbidNonWhitelisted: true, // lanza error si llegan props extra
+      transform: true,  // convierte tipos (string -> number)
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
     }),
   );
 
